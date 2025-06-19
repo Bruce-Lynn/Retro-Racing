@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+  font-family: 'Orbitron', monospace;
+  color: #00ff88;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#game-container {
+  text-align: center;
+  position: relative;
+}
+
+#game-title {
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px #00ff88;
+}
+
+#game-title h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0;
+  background: linear-gradient(45deg, #ff0080, #00ff88, #0080ff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  from { filter: brightness(1) drop-shadow(0 0 10px #00ff88); }
+  to { filter: brightness(1.2) drop-shadow(0 0 20px #ff0080); }
+}
+
+#game-title p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #88ffaa;
+}
+
+#game-canvas {
+  border: 3px solid #00ff88;
+  border-radius: 10px;
+  box-shadow: 
+    0 0 30px #00ff88,
+    inset 0 0 30px rgba(0, 255, 136, 0.1);
+  background: #000;
+}
+
+#game-instructions {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #88ffaa;
+}
+
+#game-instructions p {
+  margin: 5px 0;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+/* Retro scanlines effect */
+#game-canvas::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 136, 0.03) 2px,
+    rgba(0, 255, 136, 0.03) 4px
+  );
+  pointer-events: none;
+}
